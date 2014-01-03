@@ -22,6 +22,10 @@
    <input type="button" id="enter" value="Enter">
 </form>
 
+<p>
+<div id="feedback"></div>
+</p>
+
   <script type="text/javascript">
 
       $('#enter').click(function(){  
@@ -32,7 +36,8 @@
            cache: false, 
            data: { field1: 1, field2: 2, email:$( "#email" ).val()}, 
            success: function(data){
-              alert('Success!')
+	 	console.log(data)
+              $('#feedback').html(data)
            }
            , error: function(jqXHR, textStatus, err){
                alert('text status '+textStatus+', err '+err)
