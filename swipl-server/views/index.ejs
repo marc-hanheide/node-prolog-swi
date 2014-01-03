@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>    
+</script>
+
+
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+
+
+<form>
+        <div>
+            <label for="email">Email: </label>
+            <input type="text" id="email" name="email"></input>
+        </div>
+   <input type="button" id="enter" value="Enter">
+</form>
+
+  <script type="text/javascript">
+
+      $('#enter').click(function(){  
+
+     $.ajax({ 
+           url: '/userlogin',
+           type: 'POST',
+           cache: false, 
+           data: { field1: 1, field2: 2, email:$( "#email" ).val()}, 
+           success: function(data){
+              alert('Success!')
+           }
+           , error: function(jqXHR, textStatus, err){
+               alert('text status '+textStatus+', err '+err)
+           }
+        })
+     });            
+  </script>
+  </body>
+</html>
